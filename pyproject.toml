@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "throttlecheck"
+version = "0.1.0"
+description = "Is your internet provider slowing down Netflix, video or big downloads? Compare against a neutral control."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Arka Khorchidian" }]
+requires-python = ">=3.9"
+dependencies = ["rich>=13"]
+keywords = ["throttling", "isp", "net-neutrality", "speedtest", "netflix", "bandwidth", "network", "cli"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Internet",
+  "Topic :: System :: Networking :: Monitoring",
+  "Topic :: Utilities",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+throttlecheck = "throttlecheck.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/ArkaKhorchidian/throttlecheck"
+Issues = "https://github.com/ArkaKhorchidian/throttlecheck/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/throttlecheck"]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["docs", ".github"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests"]
